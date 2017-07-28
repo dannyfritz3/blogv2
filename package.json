@@ -1,0 +1,22 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "This is a app for my blog",
+  "main": "pages//index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dannyfritz3/blog.git"
+  },
+  "author": "Danny Fritz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dannyfritz3/blog/issues"
+  },
+  "homepage": "https://github.com/dannyfritz3/blog#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
