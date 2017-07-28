@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dannyfritz3/blog.git"
+    "url": "git+https://github.com/dannyfritz3/blogv2.git"
   },
   "author": "Danny Fritz",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dannyfritz3/blog/issues"
+    "url": "https://github.com/dannyfritz3/blogv2/issues"
   },
-  "homepage": "https://github.com/dannyfritz3/blog#readme",
+  "homepage": "https://github.com/dannyfritz3/blogv2#readme",
   "dependencies": {
     "express": "^4.15.3"
   }
