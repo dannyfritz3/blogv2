@@ -20,8 +20,8 @@
                 <input type="password" class="form-control" id="password-input" placeholder="Passwort...">
             </div>
             <div class="login-buttons" style="text-align: left;">
-                <a onclick="Login()" class="btn-default btn-lg btnLogin" title="This feature is only for Danny :)">Login</a>
-                <a href="blog.html" class="btn-default btn-lg btnGoBack" title="This feature is only for Danny :)">Go Back</a>
+                <a onclick="Login()" class="btn-default btn-lg btnLogin" title="Login">Anmeldung</a>
+                <a href="blog.php" class="btn-default btn-lg btnGoBack" title="Go Back">Geh Zurück</a>
             </div>
         </form>
     </body>

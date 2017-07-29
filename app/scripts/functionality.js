@@ -1,33 +1,25 @@
-window.onload = function() {
+window.onload = function () {
     //page measurements
     var height = window.innerHeight;
     var initWidth = window.innerWidth;
-    
+
     //page paths
     var sPath = window.location.pathname;
     var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
 
     var headerPosition = $('.header')[0].getBoundingClientRect().bottom;
-    var dynamicBGPos = headerPosition - 162;
-    
+    var dynamicBGPos = headerPosition - 142;
+
     var titleHeaderPosition = $('#header-title')[0].getBoundingClientRect();
-    //TESTING\\\\
-    console.log("height: " + height + "\nWidth: " + initWidth);
-    //TESTING////
+
+    var scrollTopBottom = $('.scroll-top')[0].getBoundingClientRect().bottom;
+
+    $('#index-welcome').css("top", scrollTopBottom);
 
     $('.header').css("background-position-y", dynamicBGPos);
     $('.header').css("background-size", 192);
 
-    window.onresize = function() {
-        headerPosition = $('.header')[0].getBoundingClientRect().bottom;
-        dynamicBGPos = headerPosition - 162;
-        $('.header').css("background-position-y", dynamicBGPos);
-
-        width = window.innerWidth;
-        $('.header').css("background-size", 192);
-    }
-
-    switch(sPage){
+    switch (sPage) {
         case "blog.html":
             $('.btnBlog').addClass("active");
             $('.btnMap').removeClass("active");
@@ -44,4 +36,13 @@ window.onload = function() {
             $('.btnMap').removeClass("active");
             break;
     }
+}
+
+window.onresize = function () {
+    headerPosition = $('.header')[0].getBoundingClientRect().bottom;
+    dynamicBGPos = headerPosition - 162;
+    $('.header').css("background-position-y", dynamicBGPos);
+
+    width = window.innerWidth;
+    $('.header').css("background-size", 192);
 }

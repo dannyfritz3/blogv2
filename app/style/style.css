@@ -1,4 +1,12 @@
 @font-face{ font-family: Blankenburg; src: url('fonts/blankenburg/Blankenburg.ttf')}
+@font-face{ font-family: Mittelschrift; src: url('fonts/alte-din-1451-mittelschrift/din1451alt G.ttf')}
+
+.scroll-top {
+    position: fixed;
+    top: -20px;
+    width: 100%;
+    z-index: 1;
+}
 
 .header {
     background-image: url("images/mountains.jpg"); 
@@ -25,7 +33,8 @@
     padding-top: 20px;
     text-align: center;
     font-family: "Blankenburg";
-    background-color: rgba(230,230,230,0.5);
+    background-color: rgba(230,230,230,1);
+    box-shadow: 10px;
     height: 50%;
 }
 
@@ -37,9 +46,9 @@
 }
 
 .login-form {
-    background-color: rgba(230,230,230,0.5);
+    background-color: rgba(146,146,146,0.5);
     padding: 15px;
-    width: 15%;
+    width: 25%;
 }
 
 .header .border {
@@ -51,11 +60,20 @@
 
 #index-welcome {
     position: absolute;
+    line-height: 35px;
+    font-family: Mittelschrift;
+    color: black;
+    font-size: 16px;
     left: 50%;
     transform: translate(-50%, 0%);
     text-align: center;
     width: 50%;
-    height: 100%;
+    height: auto;
     background-color: rgba(230,230,230,0.5);
     background-position-x: center;
+}
+
+.content {
+    padding-left: 50px;
+    padding-right: 50px;
 }
