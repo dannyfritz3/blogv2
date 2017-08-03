@@ -18,9 +18,6 @@
   "homepage": "https://github.com/dannyfritz3/blogv2#readme",
   "dependencies": {
     "ejs": "^2.5.7",
-    "express": "^4.15.3",
-    "node-php": "0.0.1",
-    "php": "0.0.1",
-    "php-express": "0.0.3"
+    "express": "^4.15.3"
   }
 }
