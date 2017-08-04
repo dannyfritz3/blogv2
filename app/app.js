@@ -34,5 +34,5 @@ app.get('/aboutme', function(request, response) {
 app.get('/login', function(request, response) {
     response.render('pages/login');
 });
-app.listen(3000);
+app.listen(process.env.PORT || 3000)
 console.log('3000 is the magic port');
