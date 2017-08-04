@@ -1,0 +1,17 @@
+@font-face{ font-family: Blankenburg; src: url('../assets/fonts/blankenburg/Blankenburg.ttf')}
+@font-face{ font-family: Mittelschrift; src: url('../assets/fonts/alte-din-1451-mittelschrift/din1451alt G.ttf')}
+
+.fa {
+    width: 40px;
+    height: 40px;
+}
+
+.lb {
+    color: black;
+    font-family: Mittelschrift;
+}
+
+.lb a {
+    color: black;
+    text-decoration: none;
+}

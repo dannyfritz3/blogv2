@@ -2,7 +2,6 @@
 @font-face{ font-family: Mittelschrift; src: url('../assets/fonts/alte-din-1451-mittelschrift/din1451alt G.ttf')}
 
 html, body {
-    /* position: relative; */
     margin: 0;
     padding: 0;
     height: 100%;
@@ -13,6 +12,26 @@ html, body {
     position: relative;
 }
 
+#header {
+    
+}
+
+#content {
+    padding-bottom: 50px;
+    line-height: 35px;
+    font-family: Mittelschrift;
+    color: black;
+    font-size: 16px;
+    top: 201px;
+    height: 100%;
+    text-align: center;
+    width: 50%;
+    background-color: rgba(230,230,230,0.5);
+    background: linear-gradient(to bottom, rgba(230,230,230,0.5) 90%,rgba(0,0,0,0) 100%);
+    background-position-x: center;
+    margin: 0 auto;
+}
+
 #footer {
     position: absolute;
     width: 100%;
@@ -20,7 +39,9 @@ html, body {
     bottom: 0; 
     left: 0;
     background-color: rgba(230,230,230,1);
+    background: linear-gradient(to top, rgba(230,230,230,0.5) 90%,rgba(0,0,0,0) 100%);
     text-align: center;
+    padding-top: 7px;
 }
 
 .scroll-top {
@@ -61,6 +82,7 @@ html, body {
     text-align: center;
     font-family: "Blankenburg";
     background-color: rgba(230,230,230,1);
+    background: linear-gradient(to bottom, rgba(230,230,230,1) 90%,rgba(0,0,0,0) 100%);
     box-shadow: 10px;
     height: 50%;
 }
@@ -83,25 +105,4 @@ html, body {
     border-bottom-width: 4px;
     border-bottom-style: solid;
     border-bottom-color: red;
-}
-
-#index-welcome {
-    position: absolute;
-    line-height: 35px;
-    font-family: Mittelschrift;
-    color: black;
-    font-size: 16px;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    text-align: center;
-    width: 50%;
-    height: auto;
-    background-color: rgba(230,230,230,0.5);
-    background-position-x: center;
-}
-
-#content {
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-bottom: 50px;
 }

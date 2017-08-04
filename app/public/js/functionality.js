@@ -14,23 +14,23 @@ window.onload = function () {
 
     var scrollTopBottom = $('.scroll-top')[0].getBoundingClientRect().bottom;
 
-    $('#index-welcome').css("top", scrollTopBottom);
+    $('#content').css("margin-top", scrollTopBottom - 5);
 
     $('.header').css("background-position-y", dynamicBGPos);
     $('.header').css("background-size", 192);
 
     switch (sPage) {
-        case "blog.html":
+        case "blog":
             $('.btnBlog').addClass("active");
             $('.btnMap').removeClass("active");
             $('.btnAboutMe').removeClass("active");
             break;
-        case "map.html":
+        case "map":
             $('.btnMap').addClass("active");
             $('.btnBlog').removeClass("active");
             $('.btnAboutMe').removeClass("active");
             break;
-        case "aboutme.html":
+        case "aboutme":
             $('.btnAboutMe').addClass("active");
             $('.btnBlog').removeClass("active");
             $('.btnMap').removeClass("active");
