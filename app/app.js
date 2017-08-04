@@ -3,6 +3,19 @@
 var express = require('express');
 var app = express();
 var mongodb = require('mongodb');
+var pg = require('pg');
+
+app.get('/db', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT * FROM test_table', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+});
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -34,5 +47,5 @@ app.get('/aboutme', function(request, response) {
 app.get('/login', function(request, response) {
     response.render('pages/login');
 });
-app.listen(process.env.PORT || 3000)
-console.log('3000 is the magic port');
+app.listen(process.env.PORT || 5000)
+console.log('5000 is the magic port');
