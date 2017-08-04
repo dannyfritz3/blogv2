@@ -17,6 +17,8 @@ html, body {
 }
 
 #content {
+    padding-left: 55px;
+    padding-right: 55px;
     padding-bottom: 50px;
     line-height: 35px;
     font-family: Mittelschrift;

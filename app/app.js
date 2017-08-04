@@ -2,7 +2,7 @@
 // load the things we need
 var express = require('express');
 var app = express();
-var ejs = require('ejs');
+var mongodb = require('mongodb');
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
