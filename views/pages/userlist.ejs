@@ -1,0 +1,9 @@
+<%- include('../partials/head')%>
+    <body>
+       <div id="container">
+            <% userlist.forEach(function(user) { %>
+            <h1><%= user.email %></h1>
+            <% }); %>
+        </div>
+    </body>
+</html>

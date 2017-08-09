@@ -2,26 +2,25 @@
 // load the things we need
 var express = require('express');
 var app = express();
-var mongodb = require('mongodb');
-var pg = require('pg');
-
-app.get('/db', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM test_table', function(err, result) {
-      done();
-      if (err)
-       { console.error(err); response.send("Error " + err); }
-      else
-       { response.render('pages/db', {results: result.rows} ); }
-    });
-  });
-});
+var url = 'mongodb://localhost:5000/data';
+var routes = require('./routes/index');
+//db code
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/ff');
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 // use res.render to load up an ejs view file
+
+app.use(function(req, res, next) {
+    req.db = db;
+    next();
+});
+
+app.use('/', routes);
 
 // index page 
 app.get('/', function(request, response) {

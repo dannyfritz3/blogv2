@@ -50,9 +50,9 @@ body {
     bottom: 0; 
     left: 0;
     background-color: rgba(230,230,230,1);
-    background: linear-gradient(to top, rgba(230,230,230,0.5) 90%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to top, rgba(230,230,230,1) 90%,rgba(0,0,0,0) 100%);
     text-align: center;
-    padding-top: 7px;
+    padding-top: 20px;
 }
 
 .scroll-top {
