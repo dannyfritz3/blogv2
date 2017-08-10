@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "startdb": "./mongodb/mongod --dbpath /Users/dannyfritz3/Desktop/blogv2/blogv2/data",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
