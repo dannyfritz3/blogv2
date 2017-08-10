@@ -1,5 +1,6 @@
 // server.js
 // load the things we need
+require('newrelic');
 var express = require('express');
 var app = express();
 var url = 'mongodb://localhost:5000/data';
