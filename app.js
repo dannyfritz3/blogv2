@@ -4,10 +4,12 @@ var express = require('express');
 var app = express();
 var url = 'mongodb://localhost:5000/data';
 var routes = require('./routes/index');
+var router = express.Router();
+var bodyParser = require('body-parser');
 //db code
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/ff');
+var db = monk('mongodb://dannyrf3:dbpassword123@ds053419.mlab.com:53419/heroku_kw2vt8z6');
 
 var http = require('http');
 var mongoose = require('mongoose');
@@ -24,12 +26,15 @@ var conn = mongoose.connection;
 
 conn.on('error', console.error.bind(console, 'connection error'));
 conn.once('open', function () {
-    
+
     // set the view engine to ejs
     app.set('view engine', 'ejs');
 
     app.use(express.static(__dirname + '/public'));
     // use res.render to load up an ejs view file
+
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.json());
 
     app.use(function (req, res, next) {
         req.db = db;
