@@ -1,18 +1,18 @@
 <%- include('../partials/head')%>
     <title>follow fritz</title>
     <body>
-        <form class="login-form">
+        <form class="login-form" method="post" action="/login">
             <div class="username-field">
                 <label for="username-input">Benutzername</label>
-                <input type="username" class="form-control" id="username-input" placeholder="Benutzername...">
+                <input type="username" class="form-control" id="username-input" name="username" placeholder="Benutzername...">
             </div>
             <div class="password-field">
                 <label for="passwords-input">Passwort</label>
-                <input type="password" class="form-control" id="password-input" placeholder="Passwort...">
+                <input type="password" class="form-control" id="password-input" name="password" placeholder="Passwort...">
             </div>
             <div class="login-buttons" style="text-align: left;">
-                <a onclick="Login()" class="btn-default btn-lg btnLogin" title="Login">Anmeldung</a>
-                <a href="blog" class="btn-default btn-lg btnGoBack" title="Go Back">Geh Zurück</a>
+                <button href="/" class="btn-default btn-lg btnGoBack" title="Go Back">Geh Zurück</button>
+                <button type="submit" class="btn-default btn-lg btnLogin" title="Login">Anmeldung</button>
             </div>
         </form>
     </body>

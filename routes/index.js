@@ -1,27 +1,27 @@
 var express = require('express');
-var router  = express.Router();
+var router = express.Router();
 
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
     res.render('pages/index', { title: 'follow fritz' });
 });
 
 /* GET New User page. */
-router.get('/newuser', function(req, res) {
+router.get('/newuser', function (req, res) {
     res.render('pages/newuser', { title: 'Add New User' });
 });
 
-router.get('/userlist', function(req, res) {
+router.get('/userlist', function (req, res) {
     var db = req.db;
     var collection = db.get('usercollection');
-    collection.find({},{},function(e,docs){
+    collection.find({}, {}, function (e, docs) {
         res.render('pages/userlist', {
-            "userlist" : docs
+            "userlist": docs
         });
     });
 });
 
 /* POST to Add User Service */
-router.post('/adduser', function(req, res) {
+router.post('/adduser', function (req, res) {
 
     // Set our internal DB variable
     var db = req.db;
@@ -35,8 +35,8 @@ router.post('/adduser', function(req, res) {
 
     // Submit to the DB
     collection.insert({
-        "username" : userName,
-        "email" : userEmail
+        "username": userName,
+        "email": userEmail
     }, function (err, doc) {
         if (err) {
             // If it failed, return error
@@ -46,6 +46,13 @@ router.post('/adduser', function(req, res) {
             // And forward to success page
             res.redirect("userlist");
         }
+    });
+});
+
+router.get('/login', function (req, res) {
+    res.render('./pages/login.ejs', {
+        message: req.flash('loginMessage')
+
     });
 });
 module.exports = router;
