@@ -1,24 +1,37 @@
-// server.js
-// load the things we need
+//node app essentials
 var express = require('express');
 var app = express();
 var url = 'mongodb://localhost:5000/data';
 var routes = require('./routes/index');
 var router = express.Router();
 var bodyParser = require('body-parser');
+
 //db code
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('mongodb://dannyrf3:dbpassword123@ds053419.mlab.com:53419/heroku_kw2vt8z6');
 
+//passport
+var passport = require('passport');
+var flash = require('connect-flash');
+
+var morgan = require('morgan');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+
+var configDB = require('./config/database.js');
+
+//mongoose
 var http = require('http');
 var mongoose = require('mongoose');
 
+//options for the mongodb to connect to
 var options = {
     server: { socketOptions: { keepAlive: 30000, connectTimeoutMS: 30000 } },
     replest: { socketOptions: { keepAlive: 30000, connectTimeoutMS: 30000 } }
 };
 
+//mongodb uri
 var mongodbUri = 'mongodb://dannyrf3:dbpassword123@ds053419.mlab.com:53419/heroku_kw2vt8z6';
 
 mongoose.connect(mongodbUri, options);
@@ -33,9 +46,22 @@ conn.once('open', function () {
     app.use(express.static(__dirname + '/public'));
     // use res.render to load up an ejs view file
 
+    require('./config/passport')(passport);
+    app.use(morgan('dev'));
+    app.use(cookieParser());
+    app.use(bodyParser());
+    
+    app.use(session( { secret: 'followfritz' }));
+    app.use(passport.initialize());
+    app.use(passport.session());
+    
+    app.use(flash());
+
+    require('./routes/routes.js');
+    require('./routes/index.js');
+
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
-
     app.use(function (req, res, next) {
         req.db = db;
         next();
