@@ -1,4 +1,5 @@
 //node app essentials
+var opbeat = require('opbeat').start();
 var express = require('express');
 var app = express();
 var url = 'mongodb://localhost:5000/data';
@@ -35,6 +36,7 @@ conn.once('open', function () {
     // set the view engine to ejs
     app.set('view engine', 'ejs');
 
+    app.use(opbeat.middleware.experss());
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     app.use(function (req, res, next) {
