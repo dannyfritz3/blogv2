@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var BlogPost = require('../models/blogpost')
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
@@ -36,6 +37,34 @@ module.exports = function(passport){
     /* GET Admin Page */
     router.get('/admin', isAuthenticated, function(req, res){
         res.render('pages/admin', {user: req.user });
+    });
+
+    /* Handle Blog Post POST*/
+    router.post('/postblog', function(req, res) {
+        var db = req.db;
+
+        var title = req.body.title;
+        var city = req.body.city;
+        var country = req.body.country;
+        var image = req.body.image;
+        var content = req.body.content;
+        
+        var newblog = new BlogPost();
+
+        newblog.title = title;
+        newblog.city = city;
+        newblog.country = country;
+        newblog.image = image;
+        newblog.content = content;
+
+        newblog.save(function(err) {
+            if (err) {
+                console.log('Error in Saving blog: ' +err);
+                throw err;
+            }
+            console.log('User Registration successful');
+            return done(null, newUser);
+        });
     });
 
 	/* GET login page. */
