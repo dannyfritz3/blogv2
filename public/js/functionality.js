@@ -46,3 +46,7 @@ window.onresize = function () {
     width = window.innerWidth;
     $('.header').css("background-size", 192);
 }
+
+function GoBack() {
+    Response.redirect('pages/index');
+}
