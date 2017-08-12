@@ -36,7 +36,7 @@ conn.once('open', function () {
     // set the view engine to ejs
     app.set('view engine', 'ejs');
 
-    app.use(opbeat.middleware.experss());
+    app.use(opbeat.middleware.express());
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     app.use(function (req, res, next) {
