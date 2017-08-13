@@ -6,10 +6,12 @@
                 <a href="/" class="btn btn-default">Back</a>
                 <a href="/logout" class="btn btn-default">Logout</a>
             </div>
-            <form class="blog-form well" method="post" action="/postblog">
+            <form class="blog-form well" method="post" action="/postblog" enctype="multipart/form-data">
                 <div class="blog-description-inputs">
                     <label for="blogTitle">Title</label>
                     <input class="form-control form-input" type="text" name="title" id="blogTitle" placeholder="Blog Post Title">
+                    <label for="blogDate">Date</label>
+                    <input class="form-control form-input" type="text" name="date" id="blogDate" placeholder="Date">
                     <label for="blogCity">City</label>
                     <input class="form-control form-input" type="text" name="city" id="blogCity" placeholder="City">
                     <label for="blogCountry">Country</label>

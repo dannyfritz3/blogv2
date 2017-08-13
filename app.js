@@ -5,6 +5,8 @@ var app = express();
 var url = 'mongodb://localhost:5000/data';
 var router = express.Router();
 var bodyParser = require('body-parser');
+var fs = require('fs');
+var path = require('path');
 
 //db code
 var mongo = require('mongodb');
@@ -36,9 +38,13 @@ conn.once('open', function () {
     // set the view engine to ejs
     app.set('view engine', 'ejs');
 
+    var multer = require('multer');
+    app.use(multer({ dest: './public/assets/uploads' }).single('image'));
+
     app.use(opbeat.middleware.express());
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
+
     app.use(function (req, res, next) {
         req.db = db;
         next();
@@ -53,7 +59,7 @@ conn.once('open', function () {
     //passport
     var passport = require('passport');
     var session = require('express-session');
-    app.use(session({secret: 'followfritz'}));
+    app.use(session({ secret: 'followfritz' }));
     app.use(passport.initialize());
     app.use(passport.session());
     // var dbConfig = require('./passport/db.js');
