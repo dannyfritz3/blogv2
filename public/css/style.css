@@ -116,3 +116,9 @@ body {
     border-bottom-style: solid;
     border-bottom-color: red;
 }
+
+.blog-post {
+    border-bottom-color: black;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+}
