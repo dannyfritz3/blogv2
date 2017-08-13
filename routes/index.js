@@ -28,7 +28,14 @@ module.exports = function (passport) {
 
     /* GET Blog Page */
     router.get('/blog', function (req, res) {
-        res.render('pages/blog', { user: req.user });
+        var db = req.db;
+        var collection = db.get('blogposts');
+        collection.find({}, {}, function (e, docs) {
+            res.render('pages/blog', {
+                "blogposts": docs
+            });
+        // res.render('pages/blog', { user: req.user });
+        });
     });
 
     /* GET Map Page */
@@ -59,6 +66,7 @@ module.exports = function (passport) {
                 date: req.body.date,
                 city: req.body.city,
                 country: req.body.country,
+                content: req.body.content,
                 contentType: req.file.mimetype,
                 size: req.file.size,
                 image: Buffer(encImg, 'base64')
