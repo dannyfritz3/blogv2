@@ -3,18 +3,19 @@
         <div id="container">
             <%- include('../partials/header')%>
             <div id="content">
+                <% blogposts.forEach(function(blogpost) { %>
+                    <div class="blog-post">
+                        <div class="blog-post-heading">
+                            <h2 class="blog-post-title"><%= blogpost.title %></h1>
+                            <h4 class="blog-post-date"><%= blogpost.date %></h3>
+                            <h4 class="blog-post-location"><%= blogpost.city %>, <%= blogpost.country %></h3>
+                            <img class="blog-post-image" src="">
+                            <p class="blog-post-text"><p><%= blogpost.content %></p>
+                        </div>
+                    </div>
+                <% });%>
             </div>
             <%- include('../partials/footer')%>
         </div>
     </body>
-
-    <div class="blog-post">
-        <div class="blog-post-heading">
-            <h1 class="blog-post-title"></h1>
-            <h3 class="blog-post-location"></h3>
-            <h3 class="blog-post-timestamp"></h3>
-            <img class="blog-post-imag" src="">
-            <p class="blog-post-text"></p>
-        </div>
-    </div>
 </html>
