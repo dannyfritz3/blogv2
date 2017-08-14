@@ -38,9 +38,6 @@ conn.once('open', function () {
     // set the view engine to ejs
     app.set('view engine', 'ejs');
 
-    var multer = require('multer');
-    app.use(multer({ dest: './public/assets/uploads' }).single('image'));
-
     app.use(opbeat.middleware.express());
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
