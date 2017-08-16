@@ -3,7 +3,6 @@ var router = express.Router();
 var BlogPost = require('../models/blogpost')
 var fs = require('fs-extra');
 var multer = require('multer');
-// var upload = multer({ limits: { fileSize: 2000000 }, dest: '../public/assets/uploads/' });
 var util = require('util');
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://dannyrf3:dbpassword123@ds053419.mlab.com:53419/heroku_kw2vt8z6';
@@ -34,8 +33,7 @@ module.exports = function (passport) {
             res.render('pages/blog', {
                 "blogposts": docs
             });
-        // res.render('pages/blog', { user: req.user });
-        });
+        })
     });
 
     /* GET Map Page */
@@ -58,8 +56,10 @@ module.exports = function (passport) {
         MongoClient.connect(url, function (err, db) {
             // read the img file from tmp in-memory location
             var newImg = fs.readFileSync(req.file.path);
+            console.log(req.file.path);
             // encode the file as a base64 string.
-            var encImg = newImg.toString('base64');
+            var encImg = Buffer(newImg).toString('base64');
+            // console.log(encImg);
             // define your new document
             var newBlog = {
                 title: req.body.title,
@@ -69,7 +69,7 @@ module.exports = function (passport) {
                 content: req.body.content,
                 contentType: req.file.mimetype,
                 size: req.file.size,
-                image: Buffer(encImg, 'base64')
+                image: encImg
             };
 
             db.collection('blogposts')

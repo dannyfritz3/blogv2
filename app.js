@@ -73,30 +73,6 @@ conn.once('open', function () {
     var routes = require('./routes/index')(passport);
     app.use('/', routes);
 
-    // // index page 
-    // app.get('/', function (request, response) {
-    //     response.render('pages/index');
-    // });
-
-    // // blog page 
-    // app.get('/blog', function (request, response) {
-    //     response.render('pages/blog');
-    // });
-
-    // // map page
-    // app.get('/map', function (request, response) {
-    //     response.render('pages/map');
-    // });
-
-    // //aboutme page
-    // app.get('/aboutme', function (request, response) {
-    //     response.render('pages/aboutme');
-    // });
-
-    // // login page
-    // app.get('/login', function (request, response) {
-    //     response.render('pages/login');
-    // });
     app.listen(process.env.PORT || 5000)
     console.log('5000 is the magic port');
 });
