@@ -31,7 +31,8 @@ module.exports = function (passport) {
         var collection = db.get('blogposts');
         collection.find({}, {}, function (e, docs) {
             res.render('pages/blog', {
-                "blogposts": docs
+                "blogposts": docs,
+                user: req.user
             });
         })
     });
@@ -56,12 +57,15 @@ module.exports = function (passport) {
         MongoClient.connect(url, function (err, db) {
             // read the img file from tmp in-memory location
             var newImg = fs.readFileSync(req.file.path);
-            console.log(req.file.path);
             // encode the file as a base64 string.
             var encImg = Buffer(newImg).toString('base64');
+            var data = req.db;
+            var collection = data.get('blogposts');
+            collection.count({},function(err, ID) {
             // console.log(encImg);
             // define your new document
             var newBlog = {
+                id: ID,
                 title: req.body.title,
                 date: req.body.date,
                 city: req.body.city,
@@ -71,7 +75,6 @@ module.exports = function (passport) {
                 size: req.file.size,
                 image: encImg
             };
-
             db.collection('blogposts')
                 .insert(newBlog, function (err, result) {
                     if (err) { console.log(err); };
@@ -81,7 +84,22 @@ module.exports = function (passport) {
                         res.render('pages/index', { title: 'Thanks for the Picture!' });
                     });
                 });
+            });
         });
+    });
+
+    /* GET edit page */
+    router.get('/edit', isAuthenticated, function (req, res) {
+        var db = req.db;
+        var collection = db.get('blogposts');
+        collection.find({}, {}, function (e, docs) {
+            res.render('pages/edit', {
+                req: req,
+                collection: collection,
+                id: req.body.id,
+                user: req.user
+            });
+        })
     });
 
     /* GET login page. */
