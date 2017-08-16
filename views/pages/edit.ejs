@@ -1,0 +1,35 @@
+<%- include('../partials/head') %>
+<script type="text/javascript" src="/js/edit.js"></script>
+    <body>
+        <div class="container">
+            <div class="page-header text-center">
+                <h1>Edit Blog Post</h1>
+                <a href="/" class="btn btn-default">Back</a>
+            </div>
+            <%  
+                console.log(id);
+                collection.find({"id": {$eq: id}});
+                var title = collection.find({"id": {$eq: req.id}}).title;
+            %> 
+            <form class="blog-form well" method="post" action="/postblog" enctype="multipart/form-data">
+                <div class="blog-description-inputs">
+                    <label for="blogTitle">Title</label>
+                    <input class="form-control form-input" type="text" name="title" id="blogTitle" value="<%= title %>">
+                    <label for="blogDate">Date</label>
+                    <input class="form-control form-input" type="text" name="date" id="blogDate" placeholder="Date">
+                    <label for="blogCity">City</label>
+                    <input class="form-control form-input" type="text" name="city" id="blogCity" placeholder="City">
+                    <label for="blogCountry">Country</label>
+                    <input class="form-control form-input" type="text" name="country" id="blogCountry" placeholder="Country">
+                    <label for="blogImage">Image</label>
+                    <input class="form-control form-input" type="file" name="image" id="blogImage">
+                </div>
+                    <div class="blog-content">
+                        <label for="blogContent">Content</label>
+                        <textarea rows="20" cols="30" class="form-control" type="text" name="content" id="blogContent" placeholder="Blog Entry..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>
