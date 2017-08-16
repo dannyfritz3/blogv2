@@ -9,7 +9,10 @@
                             <h2 class="blog-post-title"><%= blogpost.title %></h1>
                             <h4 class="blog-post-date"><%= blogpost.date %></h3>
                             <h4 class="blog-post-location"><%= blogpost.city %>, <%= blogpost.country %></h3>
-                            <img class="blog-post-image" src="">
+                            <%  
+                                var image = "data:" + blogpost.contentType + ";base64," + blogpost.image
+                            %>
+                            <img class="blog-post-image" src="<%= image %>">
                             <p class="blog-post-text"><p><%= blogpost.content %></p>
                         </div>
                     </div>
