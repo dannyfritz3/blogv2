@@ -9,10 +9,10 @@
                             <h2 class="blog-post-title"><%= blogpost.title %></h1>
                             <h4 class="blog-post-date"><%= blogpost.date %></h3>
                             <h4 class="blog-post-location"><%= blogpost.city %>, <%= blogpost.country %></h3>
-                            <%  
-                                var image = "data:" + blogpost.contentType + ";base64," + blogpost.image
-                            %>
-                            <img class="blog-post-image" src="<%= image %>">
+                            <% var image = "data:" + blogpost.contentType + ";base64," + blogpost.image %>
+                            <div class="portrait">
+                                <img class="blog-post-image" src="<%= image %>" align="middle">
+                            </div>
                             <p class="blog-post-text"><p><%= blogpost.content %></p>
                         </div>
                     </div>

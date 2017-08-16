@@ -122,3 +122,15 @@ body {
     border-bottom-width: 2px;
     border-bottom-style: solid;
 }
+
+.blog-post-image {
+    max-height: 100%;
+    max-width: 100%;
+    image-orientation: from-image;
+}
+
+.portrait {
+    padding-top: 20px;
+    height: 500px;
+    width: 500px;
+}

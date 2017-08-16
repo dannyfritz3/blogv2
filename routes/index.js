@@ -3,7 +3,6 @@ var router = express.Router();
 var BlogPost = require('../models/blogpost')
 var fs = require('fs-extra');
 var multer = require('multer');
-var upload = multer({ limits: { fileSize: 2000000 }, dest: '../public/assets/uploads/' });
 var util = require('util');
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://dannyrf3:dbpassword123@ds053419.mlab.com:53419/heroku_kw2vt8z6';
@@ -34,8 +33,7 @@ module.exports = function (passport) {
             res.render('pages/blog', {
                 "blogposts": docs
             });
-        // res.render('pages/blog', { user: req.user });
-        });
+        })
     });
 
     /* GET Map Page */
@@ -72,7 +70,6 @@ module.exports = function (passport) {
                 contentType: req.file.mimetype,
                 size: req.file.size,
                 image: encImg
-                //image: Buffer(encImg, 'base64')
             };
 
             db.collection('blogposts')
