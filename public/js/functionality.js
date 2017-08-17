@@ -40,7 +40,7 @@ window.onload = function () {
 
 window.onresize = function () {
     headerPosition = $('.header')[0].getBoundingClientRect().bottom;
-    dynamicBGPos = headerPosition - 162;
+    dynamicBGPos = headerPosition - 142;
     $('.header').css("background-position-y", dynamicBGPos);
 
     width = window.innerWidth;

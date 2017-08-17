@@ -34,7 +34,7 @@ body {
     top: 201px;
     height: 100%;
     text-align: left;
-    width: 60%;
+    width: 55%;
     background-color: rgba(230,230,230,0.5);
     background: linear-gradient(to bottom, rgba(230,230,230,0.5) 80%,rgba(0,0,0,0) 100%);
     background-position-x: center;
@@ -67,9 +67,7 @@ body {
 .header {
     background-image: url("../assets/images/mountains.jpg"); 
     background-repeat: repeat-x;
-    /* background-size: 10%; */
-    /* background-position-y: -25px;   */
-    /* background-position-x: 0px; */
+    background-position: center;
     border-bottom-width: 4px;
     border-bottom-style: solid;
     width: 100%;

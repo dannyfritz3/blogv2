@@ -89,17 +89,34 @@ module.exports = function (passport) {
     });
 
     /* GET edit page */
-    router.get('/edit', isAuthenticated, function (req, res) {
+    router.post('/edit', function (req, res) {
         var db = req.db;
         var collection = db.get('blogposts');
-        collection.find({}, {}, function (e, docs) {
+        var blogid = req.body.identification;
+        collection.find({id:0}, function (e, docs) {
             res.render('pages/edit', {
+                "blog": docs,
                 req: req,
                 collection: collection,
                 id: req.body.id,
                 user: req.user
             });
         })
+    });
+
+    /* Handle postblog POST */
+    router.post('/editpost', function (req, res) {
+        var newImg = fs.readFileSync(req.file.path);
+        // encode the file as a base64 string.
+        var encImg = Buffer(newImg).toString('base64');
+        MongoClient.connect(url, function (err, db) {
+            db.collection('blogposts').updateOne(
+                {id: 0},
+                {$set: {"title": req.body.title, "date": req.body.date, "city": req.body.city, "country": req.body.country, "content": req.body.content, "contentType": req.file.mimetype, "image": encImg}}
+            ).then(function(result) {
+                res.redirect('blog');
+            })
+        });
     });
 
     /* GET login page. */

@@ -6,8 +6,8 @@
                 <% blogposts.forEach(function(blogpost) { %>
                     <div class="blog-post">
                         <div class="blog-post-heading">
-                            <form method="get" action="/edit">
-                                <input name="id" style="display: none;" value="<%= blogpost.id %>">
+                            <form method="post" action="/edit">
+                                <input name="identification" style="display: none;" value="<%= blogpost.id %>">
                                 <h2 class="blog-post-title"><%= blogpost.title %></h2>
                                 <%  if(user !== undefined) { %>
                                 <button type="submit" class="btn btn-default pull-right">Edit</button>

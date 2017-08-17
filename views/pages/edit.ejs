@@ -6,15 +6,10 @@
                 <h1>Edit Blog Post</h1>
                 <a href="/" class="btn btn-default">Back</a>
             </div>
-            <%  
-                console.log(id);
-                collection.find({"id": {$eq: id}});
-                var title = collection.find({"id": {$eq: req.id}}).title;
-            %> 
-            <form class="blog-form well" method="post" action="/postblog" enctype="multipart/form-data">
+            <form class="blog-form well" method="post" action="/editpost" enctype="multipart/form-data">
                 <div class="blog-description-inputs">
                     <label for="blogTitle">Title</label>
-                    <input class="form-control form-input" type="text" name="title" id="blogTitle" value="<%= title %>">
+                    <input class="form-control form-input" type="text" name="title" id="blogTitle" value="">
                     <label for="blogDate">Date</label>
                     <input class="form-control form-input" type="text" name="date" id="blogDate" placeholder="Date">
                     <label for="blogCity">City</label>
