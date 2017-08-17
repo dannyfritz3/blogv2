@@ -2,10 +2,6 @@ var express = require('express');
 var router = express.Router();
 var BlogPost = require('../models/blogpost')
 var fs = require('fs-extra');
-<<<<<<< HEAD
-=======
-var multer = require('multer');
->>>>>>> 0782ec4af2b153a94f4e8922f7bc6da9ccae7096
 var util = require('util');
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://dannyrf3:dbpassword123@ds053419.mlab.com:53419/heroku_kw2vt8z6';
