@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var BlogPost = require('../models/blogpost')
 var fs = require('fs-extra');
+<<<<<<< HEAD
+=======
+var multer = require('multer');
+>>>>>>> 0782ec4af2b153a94f4e8922f7bc6da9ccae7096
 var util = require('util');
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://dannyrf3:dbpassword123@ds053419.mlab.com:53419/heroku_kw2vt8z6';
@@ -30,10 +34,10 @@ module.exports = function (passport) {
         var collection = db.get('blogposts');
         collection.find({}, {}, function (e, docs) {
             res.render('pages/blog', {
-                "blogposts": docs
+                "blogposts": docs,
+                user: req.user
             });
-        // res.render('pages/blog', { user: req.user });
-        });
+        })
     });
 
     /* GET Map Page */
@@ -57,9 +61,14 @@ module.exports = function (passport) {
             // read the img file from tmp in-memory location
             var newImg = fs.readFileSync(req.file.path);
             // encode the file as a base64 string.
-            var encImg = newImg.toString('base64');
+            var encImg = Buffer(newImg).toString('base64');
+            var data = req.db;
+            var collection = data.get('blogposts');
+            collection.count({},function(err, ID) {
+            // console.log(encImg);
             // define your new document
             var newBlog = {
+                id: ID,
                 title: req.body.title,
                 date: req.body.date,
                 city: req.body.city,
@@ -67,9 +76,8 @@ module.exports = function (passport) {
                 content: req.body.content,
                 contentType: req.file.mimetype,
                 size: req.file.size,
-                image: Buffer(encImg, 'base64')
+                image: encImg
             };
-
             db.collection('blogposts')
                 .insert(newBlog, function (err, result) {
                     if (err) { console.log(err); };
@@ -79,7 +87,22 @@ module.exports = function (passport) {
                         res.render('pages/index', { title: 'Thanks for the Picture!' });
                     });
                 });
+            });
         });
+    });
+
+    /* GET edit page */
+    router.get('/edit', isAuthenticated, function (req, res) {
+        var db = req.db;
+        var collection = db.get('blogposts');
+        collection.find({}, {}, function (e, docs) {
+            res.render('pages/edit', {
+                req: req,
+                collection: collection,
+                id: req.body.id,
+                user: req.user
+            });
+        })
     });
 
     /* GET login page. */
