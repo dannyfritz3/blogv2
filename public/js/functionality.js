@@ -17,6 +17,7 @@ window.onload = function () {
     $('#content').css("margin-top", scrollTopBottom - 5);
 
     $('.header').css("background-position-y", dynamicBGPos);
+    $('.header').css("background-position-x", initWidth * 1.73);
     $('.header').css("background-size", 192);
 
     switch (sPage) {
