@@ -92,13 +92,18 @@ module.exports = function (passport) {
     router.post('/edit', function (req, res) {
         var db = req.db;
         var collection = db.get('blogposts');
-        var blogid = req.body.identification;
-        collection.find({id:0}, function (e, docs) {
+        collection.find({title: req.body.editTitle}, function (e, docs) {
             res.render('pages/edit', {
                 "blog": docs,
                 req: req,
                 collection: collection,
-                id: req.body.id,
+                id: req.body.identification,
+                title: req.body.editTitle,
+                date: req.body.editDate,
+                city: req.body.editCity,
+                country: req.body.editCountry,
+                // image: req.body.editImage,
+                content: req.body.editContent,
                 user: req.user
             });
         })
@@ -111,7 +116,7 @@ module.exports = function (passport) {
         var encImg = Buffer(newImg).toString('base64');
         MongoClient.connect(url, function (err, db) {
             db.collection('blogposts').updateOne(
-                {id: 0},
+                {"id": parseInt(req.body.identification)},
                 {$set: {"title": req.body.title, "date": req.body.date, "city": req.body.city, "country": req.body.country, "content": req.body.content, "contentType": req.file.mimetype, "image": encImg}}
             ).then(function(result) {
                 res.redirect('blog');

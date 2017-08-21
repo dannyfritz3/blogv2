@@ -9,19 +9,20 @@
             <form class="blog-form well" method="post" action="/editpost" enctype="multipart/form-data">
                 <div class="blog-description-inputs">
                     <label for="blogTitle">Title</label>
-                    <input class="form-control form-input" type="text" name="title" id="blogTitle" value="">
+                    <input class="form-control form-input" type="text" name="title" id="blogTitle" value="<%= title %>">
                     <label for="blogDate">Date</label>
-                    <input class="form-control form-input" type="text" name="date" id="blogDate" placeholder="Date">
+                    <input class="form-control form-input" type="text" name="date" id="blogDate" placeholder="Date" value="<%= date %>">
                     <label for="blogCity">City</label>
-                    <input class="form-control form-input" type="text" name="city" id="blogCity" placeholder="City">
+                    <input class="form-control form-input" type="text" name="city" id="blogCity" placeholder="City" value="<%= city %>">
                     <label for="blogCountry">Country</label>
-                    <input class="form-control form-input" type="text" name="country" id="blogCountry" placeholder="Country">
+                    <input class="form-control form-input" type="text" name="country" id="blogCountry" placeholder="Country" value="<%= country %>">
                     <label for="blogImage">Image</label>
-                    <input class="form-control form-input" type="file" name="image" id="blogImage">
+                    <input class="form-control form-input" type="file" name="image" id="blogImage" src="">
+                    <input name="identification" type="text" style="display: none;" value="<%= id %>">
                 </div>
                     <div class="blog-content">
                         <label for="blogContent">Content</label>
-                        <textarea rows="20" cols="30" class="form-control" type="text" name="content" id="blogContent" placeholder="Blog Entry..."></textarea>
+                        <textarea rows="20" cols="30" class="form-control" type="text" name="content" id="blogContent" placeholder="Blog Entry..."><%= content %></textarea>
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
             </form>

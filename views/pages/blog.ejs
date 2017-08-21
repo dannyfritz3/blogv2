@@ -6,19 +6,25 @@
                 <% blogposts.forEach(function(blogpost) { %>
                     <div class="blog-post">
                         <div class="blog-post-heading">
+                            <h2 class="blog-post-title"><%= blogpost.title %></h2>
+                            <h4 class="blog-post-date"><%= blogpost.date %></h4>
+                            <h4 class="blog-post-location"><%= blogpost.city %>, <%= blogpost.country %></h4>
+                            <% var image = "data:" + blogpost.contentType + ";base64," + blogpost.image %>
+                            <div class="blog-post-text"><%= blogpost.content %></div>
+                            <div class="portrait">
+                                <img class="blog-post-image" src="<%= image %>">
+                            </div>
                             <form method="post" action="/edit">
-                                <input name="identification" style="display: none;" value="<%= blogpost.id %>">
-                                <h2 class="blog-post-title"><%= blogpost.title %></h2>
+                                <input name="identification" type="number" style="display: none;" value="<%= blogpost.id %>">
+                                <input name="editTitle" type="text" style="display: none;" value="<%= blogpost.title %>">
+                                <input name="editDate" type="text" style="display: none;" value="<%= blogpost.date %>">
+                                <input name="editCity" type="text" style="display: none;" value="<%= blogpost.city %>">
+                                <input name="editCountry" type="text" style="display: none;" value="<%= blogpost.country %>">
+                                <input name="editImage" type="file" style="display: none;" value="<%= image %>">
+                                <input name="editContent" type="text" style="display: none;" value="<%= blogpost.content %>">
                                 <%  if(user !== undefined) { %>
                                 <button type="submit" class="btn btn-default pull-right">Edit</button>
                                 <% } %>
-                                <h4 class="blog-post-date"><%= blogpost.date %></h4>
-                                <h4 class="blog-post-location"><%= blogpost.city %>, <%= blogpost.country %></h4>
-                                <% var image = "data:" + blogpost.contentType + ";base64," + blogpost.image %>
-                                <div class="blog-post-text"><%= blogpost.content %></div>
-                                <div class="portrait">
-                                    <img class="blog-post-image" src="<%= image %>">
-                                </div>
                             </form>
                         </div>
                     </div>
